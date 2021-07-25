@@ -22,10 +22,12 @@ const UploadFile = () => {
 		}
 	};
 	return (
-	<form className="form">
+		<form className="form">
 			<label className="text__center">
 				<input type="file" onChange={handleFileUpload} />
-				<span className="button button__primary">Upload Image</span>
+				<span className="button button__primary">
+					<i class="fa fa-plus"></i> {"  "}Upload Image
+				</span>
 			</label>
 			<div className="output">
 				{error && <p className="text__center error">{error}</p>}
