@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Fuggles&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap");
 
 :root {
 	--color-dark: #170041;
 	--color-primary: #9000ff;
 	--color-light: #4ca1a3;
 	--color-background: #ffffff;
+	--heading: "Otomanopee One", sans-serif;
 }
 * {
 	box-sizing: border-box;
@@ -71,14 +73,22 @@ a {
 }
 
 .brand__name {
-	font-family: "Fuggles", cursive;
+	/* font-family: "Fuggles", cursive; */
 	margin: 0;
 	font-size: 3rem;
+	font-family: var(--heading);
+	font-size: 72px;
+	background: -webkit-linear-gradient(var(--color-primary), var(--color-light));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .brand__tagline {
+	font-family: "Fuggles", cursive;
 	margin: 0;
 	color: var(--color-dark);
+	font-weight: 900;
+	font-size: 2.5rem;
 }
 
 .main {
