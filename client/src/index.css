@@ -141,7 +141,11 @@ label:hover {
 	grid-template-columns: auto auto auto;
 }
 .masonry-item {
-	background: linear-gradient(to right, purple, red);
+	background: linear-gradient(
+		to right,
+		var(--color-dark),
+		var(--color-primary)
+	);
 	position: relative;
 	height: 12rem;
 	width: 10rem;
