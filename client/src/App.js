@@ -3,6 +3,7 @@ import ImageGrid from "./Components/ImageGrid";
 import Modal from "./Components/Modal";
 import UploadFile from "./Components/UploadFile";
 import { Path, Route } from "react-router-dom";
+import Welcome from "./Components/welcome";
 
 function App() {
 	const [selectedImage, setSelectedImage] = useState(null);
@@ -26,6 +27,8 @@ function App() {
 					setSelectedImage={setSelectedImage}
 				/>
 			)}
+
+			<Route path="/signin" exact component={<Welcome />} />
 		</div>
 	);
 }
