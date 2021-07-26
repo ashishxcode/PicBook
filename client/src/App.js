@@ -2,6 +2,7 @@ import { useState } from "react";
 import ImageGrid from "./Components/ImageGrid";
 import Modal from "./Components/Modal";
 import UploadFile from "./Components/UploadFile";
+import { Path, Route } from "react-router-dom";
 
 function App() {
 	const [selectedImage, setSelectedImage] = useState(null);
