@@ -14,7 +14,7 @@ const useStorage = (file) => {
         const storageRef = projectStorage.ref(`${file.name}-${uuidv4()}`);
 
         // Creating collection on the firestore
-        const collectionRef = projectFirestore.collection('images');
+        const collectionRef = projectFirestore.collection('Images');
         
         storageRef.put(file).on('state_changed', (snapshot) => {
             let precentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
