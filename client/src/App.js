@@ -22,7 +22,13 @@ function App() {
 			<ToastContainer />
 			<Switch>
 				<Route path="/" exact component={Welcome} />
-				<Route path="/user" exact component={UserFeed} />
+				<Route
+					path="/user"
+					exact
+					component={UserFeed}
+					setSelectedImage={setSelectedImage}
+					selectedImage={selectedImage}
+				/>
 			</Switch>
 		</div>
 	);
