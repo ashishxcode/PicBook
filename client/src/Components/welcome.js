@@ -1,8 +1,7 @@
 import React from "react";
-import { auth, googleAuthProvider,projectFirestore } from "../firebase/config";
+import { auth, googleAuthProvider, projectFirestore } from "../firebase/config";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { projectFirestore } from "../firebase/config";
 
 const Welcome = ({ history }) => {
 	const dispatch = useDispatch();
@@ -12,7 +11,7 @@ const Welcome = ({ history }) => {
 
 		auth
 			.signInWithPopup(googleAuthProvider)
-			.then(async (result) =>  {
+			.then(async (result) => {
 				var userCreds = result.credential;
 				// var user = auth.currentUser;
 				const user = result.user;
@@ -20,8 +19,11 @@ const Welcome = ({ history }) => {
 				console.log("Login Was done, user info--->", user);
 				console.log("Token-->", token);
 				toast.success("Logged In Succesfully!");
-				if (user.emailVerified){
-					await collectionRef.add({'name': user.displayName,'email':user.email});
+				if (user.emailVerified) {
+					await collectionRef.add({
+						name: user.displayName,
+						email: user.email,
+					});
 					history.push("/user");
 					dispatch({
 						type: "USER_LOGGED_IN",

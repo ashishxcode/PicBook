@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
-=======
-import React,{useState} from "react";
->>>>>>> e3eefe04593af8d28526ec7430bfc8b267a72e2a
+
 import ImageGrid from "./ImageGrid";
 import Modal from "./Modal";
 import UploadFile from "./UploadFile";
