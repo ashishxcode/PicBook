@@ -1,8 +1,7 @@
 import { useState } from "react";
-import ImageGrid from "./Components/ImageGrid";
-import Modal from "./Components/Modal";
-import UploadFile from "./Components/UploadFile";
-import { Path, Route } from "react-router-dom";
+
+import { Path, Route, Switch } from "react-router-dom";
+import UserFeed from "./Components/User/UserFeed";
 import Welcome from "./Components/welcome";
 
 function App() {
@@ -16,19 +15,10 @@ function App() {
 					<small className="brand__tagline">Adding Life To Moments.</small>
 				</div>
 			</header>
-			<UploadFile />
-			<ImageGrid
-				selectedImage={selectedImage}
-				setSelectedImage={setSelectedImage}
-			/>
-			{selectedImage && (
-				<Modal
-					selectedImage={selectedImage}
-					setSelectedImage={setSelectedImage}
-				/>
-			)}
-
-			<Route path="/signin" exact component={<Welcome />} />
+			<Switch>
+				<Route path="/" exact component={Welcome} />
+				<Route path="/user" exact component={UserFeed} />
+			</Switch>
 		</div>
 	);
 }
