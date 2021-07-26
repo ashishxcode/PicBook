@@ -5,6 +5,7 @@ import UploadFile from "./Components/UploadFile";
 
 function App() {
 	const [selectedImage, setSelectedImage] = useState(null);
+	console.log("CHECK-->", process.env.REACT_APP_FIREBASE_API_KEY);
 	return (
 		<div className="App">
 			<header className="header">
