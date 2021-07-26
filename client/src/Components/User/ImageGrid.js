@@ -1,5 +1,5 @@
 import React from "react";
-import useFirestore from "../Hooks/useFIrestore";
+import useFirestore from "../../Hooks/useFIrestore";
 import { motion } from "framer-motion";
 
 const ImageGrid = ({ selectedImage, setSelectedImage }) => {
