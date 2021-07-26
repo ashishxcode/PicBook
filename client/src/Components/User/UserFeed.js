@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import ImageGrid from "./ImageGrid";
 import Modal from "./Modal";
 import UploadFile from "./UploadFile";
 
-const UserFeed = ({ selectedImage, setSelectedImage }) => {
+const UserFeed = () => {
+	const [selectedImage, setSelectedImage] = useState(null);
 	return (
 		<>
 			<UploadFile />
