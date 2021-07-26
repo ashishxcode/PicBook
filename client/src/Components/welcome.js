@@ -2,6 +2,7 @@ import React from "react";
 import { auth, googleAuthProvider, projectFirestore } from "../firebase/config";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { AiFillGoogleCircle } from "react-icons/ai";
 
 const Welcome = ({ history }) => {
 	const dispatch = useDispatch();
@@ -40,7 +41,12 @@ const Welcome = ({ history }) => {
 		<div>
 			<h2 className="test">Welcome To PicBook</h2>
 
-			<button onClick={userSignUp}>Sign Up With Google</button>
+			<button onClick={userSignUp}>
+				<div className="btn_content">
+					<AiFillGoogleCircle style={{ fontSize: "1.2rem" }} />
+					<p>Sign Up With Google</p>
+				</div>
+			</button>
 		</div>
 	);
 };
