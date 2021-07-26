@@ -2,6 +2,7 @@ import React from "react";
 import { auth, googleAuthProvider } from "../firebase/config";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { projectFirestore } from "../firebase/config";
 
 const Welcome = ({ history }) => {
 	const dispatch = useDispatch();
