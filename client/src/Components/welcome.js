@@ -1,5 +1,6 @@
 import React from "react";
 import { auth, googleAuthProvider } from "../firebase/config";
+import { toast } from "react-toastify";
 
 const Welcome = () => {
 	const userSignUp = () => {
@@ -12,6 +13,7 @@ const Welcome = () => {
 				var userInfo = result.user;
 				console.log("Login Was done--->", user);
 				console.log("User Info -->", userInfo);
+				toast.success("Logged In Succesfully!");
 			})
 			.catch((err) => console.log(err));
 	};
