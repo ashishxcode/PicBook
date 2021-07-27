@@ -5,23 +5,31 @@ import "react-toastify/dist/ReactToastify.css";
 
 import {  Route, Switch } from "react-router-dom";
 import UserFeed from "./Components/User/UserFeed";
-import {auth} from "./firebase/config";	
+import {auth,projectFirestore} from "./firebase/config";	
 import Welcome from "./Components/welcome";
 import { useDispatch } from 'react-redux';
         
 function App() {
 	const [userState, setUserState] = useState(null); 
 	const dispatch = useDispatch();
-
+	const collectionRef = projectFirestore.collection("users");
 	useEffect(() => {
 		auth.onAuthStateChanged(async (user) => {
 		 if(user){
+			 
+			await collectionRef.add({
+				 'Name': user.displayName,
+				 'Email':user.email, 
+				 "UserProfile":user.photoURL
+			});
+
 			 console.log("Firebase User-->",user);
 			 dispatch({	
 				 		type: "USER_LOGGED_IN",
 						payload: {
 							Name: user.displayName,
 							Email: user.email,
+							UserProfile: user.photoURL
 						}
 					});
 			setUserState(user);
@@ -29,7 +37,7 @@ function App() {
 			setUserState(null);
 		 }
 		});
-	} , [dispatch]);
+	} , [dispatch,collectionRef]);
 
 	const handleLogout = () => {
 		auth.signOut();
