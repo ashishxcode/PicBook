@@ -1,20 +1,37 @@
-import React from "react";
-import { auth, googleAuthProvider } from "../firebase/config";
+import React, { useEffect } from "react";
+
+import { auth, googleAuthProvider, projectFirestore } from "../firebase/config";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { AiFillGoogleCircle } from "react-icons/ai";
 
 const Welcome = ({ history }) => {
+	const { user } = useSelector((state) => ({ ...state }));
+
+	useEffect(() => {
+		if (user) history.push("/user");
+	}, [user]);
+
 	const userSignUp = () => {
 		console.log("Working");
 
 		auth
 			.signInWithPopup(googleAuthProvider)
-			.then(async (result) =>  {
+
+			// var user = auth.currentUser;
+
+			.then(async (result) => {
 				const user = result.user;
 				const token = user.getIdTokenResult();
 				console.log("Login Was done, user info--->", user);
 				console.log("Token-->", token);
 				toast.success("Logged In Succesfully!");
-				if (user.emailVerified){
+
+				if (user.emailVerified) {
+					// await collectionRef.add({
+					// 	name: user.displayName,
+					// 	email: user.email,
+					// });
 					history.push("/user");
 				}
 			})
@@ -23,7 +40,12 @@ const Welcome = ({ history }) => {
 	return (
 		<div>
 			<h2 className="test">Welcome To PicBook</h2>
-			<button onClick={userSignUp}>Sign Up With Google</button>
+			<button onClick={userSignUp}>
+				<div className="btn_content">
+					<AiFillGoogleCircle style={{ fontSize: "1.2rem" }} />
+					<p>Sign Up With Google</p>
+				</div>
+			</button>
 		</div>
 	);
 };
