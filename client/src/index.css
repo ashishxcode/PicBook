@@ -119,6 +119,13 @@ button,
 	opacity: 0.8;
 }
 
+.profile__avatar {
+	border-radius: 100%;
+	width: 2.3rem;
+	height: 2.3rem;
+	border: 2px solid var(--color-primary);
+}
+
 .main {
 	margin: 2rem 0;
 }
