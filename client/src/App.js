@@ -18,7 +18,7 @@ function App() {
 	const dispatch = useDispatch();
 	const collectionRef = projectFirestore.collection("users");
 	useEffect(() => {
-		auth.onAuthStateChanged(async (user) => {
+		const unSubscribe = auth.onAuthStateChanged(async (user) => {
 			if (user) {
 				console.log("Firebase User-->", user);
 				dispatch({
@@ -34,6 +34,9 @@ function App() {
 				setUserState(null);
 			}
 		});
+
+		//cleanup
+		return () => unSubscribe();
 	}, [dispatch, collectionRef]);
 
 	const handleLogout = () => {
