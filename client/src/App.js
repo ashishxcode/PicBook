@@ -8,6 +8,7 @@ import UserFeed from "./Components/User/UserFeed";
 import {auth,projectFirestore} from "./firebase/config";	
 import Welcome from "./Components/welcome";
 import { useDispatch } from 'react-redux';
+import Header from './Components/Header/Header';
         
 function App() {
 	const [userState, setUserState] = useState(null); 
@@ -48,13 +49,7 @@ function App() {
 	console.log("CHECK-->", process.env.REACT_APP_FIREBASE_API_KEY);
 	return (
 		<div className="App">
-			<header className="header">
-				<div className="brand">
-					<h1 className="brand__name">PicBook</h1>
-					<small className="brand__tagline">Adding Life To Moments.</small>
-					
-				</div>
-			</header>
+			<Header/>
 			<ToastContainer />
 			<Switch>
 				<Route path="/" exact component={Welcome} />
