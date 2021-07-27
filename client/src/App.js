@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 //toast
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -16,7 +16,6 @@ import Header from "./Components/Header/Header";
 
 function App() {
 	
-	const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 	const dispatch = useDispatch();
 	const collectionRef = projectFirestore.collection("users");
 
@@ -30,12 +29,10 @@ function App() {
 						Name: user.displayName,
 						Email: user.email,
 						UserProfile: user.photoURL,
+						UserId: user.uid
 					},
 				});
-				setIsUserAuthenticated(true);
-			} else {
-				setIsUserAuthenticated(false);
-			}
+			} 
 		});
 
 		//cleanup
@@ -44,7 +41,7 @@ function App() {
 
 	return (
 		<div className="App">
-			<Header isUserAuthenticated={isUserAuthenticated} />
+			<Header />
 			<ToastContainer />
 			<Switch>
 				<Route path="/" exact component={Welcome} />

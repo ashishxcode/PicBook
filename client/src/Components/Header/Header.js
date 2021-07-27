@@ -6,11 +6,12 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Modal, Button } from "antd";
 
-const Header = ({ isUserAuthenticated, userProfile }) => {
+const Header = () => {
 	const dispatch = useDispatch();
 	const { user } = useSelector((state) => ({ ...state }));
 	// const { userProfile } = user;
 	const history = useHistory();
+
 	const [showModal, setShowModal] = useState(false);
 
 	// const handleLogoutModal = (e) => {
@@ -26,7 +27,6 @@ const Header = ({ isUserAuthenticated, userProfile }) => {
 
 	return (
 		<header className="header">
-			{console.log("isUserAuthenticated=", isUserAuthenticated)}
 			<div className="brand">
 				<a className="nav__item brand__name" href="/">
 					<img className="brand__logo" src="/images/PicBook-Logo.svg" alt="" />
@@ -38,14 +38,12 @@ const Header = ({ isUserAuthenticated, userProfile }) => {
 					Home
 				</a>
 				{user ? (
-					<div>
-						{userProfile && (
-							<img
-								className="nav__item profile__avatar"
-								src={userProfile}
-								alt=""
-							/>
-						)}
+					<div className="nav">
+						<img
+							className="nav__item profile__avatar"
+							src={user.UserProfile}
+							alt=""
+						/>
 						<button
 							className="nav__item button button__outline button__danger"
 							onClick={() => setShowModal(true)}
