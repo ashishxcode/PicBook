@@ -2,10 +2,16 @@ import React, { useEffect } from "react";
 
 import { auth, googleAuthProvider, projectFirestore } from "../firebase/config";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AiFillGoogleCircle } from "react-icons/ai";
 
 const Welcome = ({ history }) => {
+	const { user } = useSelector((state) => ({ ...state }));
+
+	useEffect(() => {
+		if (user) history.push("/user");
+	}, [user]);
+
 	const userSignUp = () => {
 		console.log("Working");
 
@@ -40,8 +46,6 @@ const Welcome = ({ history }) => {
 					<p>Sign Up With Google</p>
 				</div>
 			</button>
-			=======
-			<button onClick={userSignUp}>Sign Up With Google</button>
 		</div>
 	);
 };

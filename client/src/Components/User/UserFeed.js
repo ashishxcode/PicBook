@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import ImageGrid from "./ImageGrid";
 import Modal from "./Modal";
 import UploadFile from "./UploadFile";
 
-const UserFeed = () => {
+import { useSelector } from "react-redux";
+const UserFeed = ({ history }) => {
 	const [selectedImage, setSelectedImage] = useState(null);
+	const { user } = useSelector((state) => ({ ...state }));
+
+	useEffect(() => {
+		if (!user) {
+			history.push("/");
+		}
+	}, []);
+
 	return (
 		<>
 			<UploadFile />
