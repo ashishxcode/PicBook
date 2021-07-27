@@ -11,18 +11,15 @@ import { auth } from "./firebase/config";
 import { projectFirestore } from "./firebase/config";
 
 import Welcome from "./Components/welcome";
-<<<<<<< HEAD
 import { useDispatch } from 'react-redux';
-import Header from './Components/Header/Header';
-        
-=======
-import { useDispatch } from "react-redux";
+import Header from "./Components/Header/Header";
 
->>>>>>> 5ee4d6ca57a2c957f95561d41edbebeb1afbddb8
 function App() {
-	const [userState, setUserState] = useState(null);
+	
+	const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 	const dispatch = useDispatch();
 	const collectionRef = projectFirestore.collection("users");
+
 	useEffect(() => {
 		const unSubscribe = auth.onAuthStateChanged(async (user) => {
 			if (user) {
@@ -35,9 +32,9 @@ function App() {
 						UserProfile: user.photoURL,
 					},
 				});
-				setUserState(user);
+				setIsUserAuthenticated(true);
 			} else {
-				setUserState(null);
+				setIsUserAuthenticated(false);
 			}
 		});
 
@@ -45,31 +42,14 @@ function App() {
 		return () => unSubscribe();
 	}, [dispatch, collectionRef]);
 
-	const handleLogout = () => {
-		auth.signOut();
-		if (userState) {
-			dispatch({ type: "USER_LOGGED_OUT", payload: null });
-		}
-	};
-	console.log("CHECK-->", process.env.REACT_APP_FIREBASE_API_KEY);
 	return (
 		<div className="App">
-<<<<<<< HEAD
-			<Header/>
-=======
-			<header className="header">
-				<div className="brand">
-					<h1 className="brand__name">PicBook</h1>
-					<small className="brand__tagline">Adding Life To Moments.</small>
-				</div>
-			</header>
->>>>>>> 5ee4d6ca57a2c957f95561d41edbebeb1afbddb8
+			<Header isUserAuthenticated={isUserAuthenticated} />
 			<ToastContainer />
 			<Switch>
 				<Route path="/" exact component={Welcome} />
 				<Route path="/user" exact component={UserFeed} />
 			</Switch>
-			{userState && <button onClick={handleLogout}>Logout</button>}
 		</div>
 	);
 }

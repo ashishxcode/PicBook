@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
-import { auth, googleAuthProvider, projectFirestore } from "../firebase/config";
+import { auth, googleAuthProvider } from "../firebase/config";
 import { toast } from "react-toastify";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { AiFillGoogleCircle } from "react-icons/ai";
 
 const Welcome = ({ history }) => {
@@ -10,7 +10,7 @@ const Welcome = ({ history }) => {
 
 	useEffect(() => {
 		if (user) history.push("/user");
-	}, [user]);
+	}, [user,history]);
 
 	const userSignUp = () => {
 		console.log("Working");
@@ -41,9 +41,9 @@ const Welcome = ({ history }) => {
 		<div>
 			<h2 className="test">Welcome To PicBook</h2>
 			<button onClick={userSignUp}>
-				<div className="btn_content">
-					<AiFillGoogleCircle style={{ fontSize: "1.2rem" }} />
-					<p>Sign Up With Google</p>
+				<div className="button button__primary">
+					<AiFillGoogleCircle className="icon" style={{ fontSize: "1.2rem" }} />
+					<span className="button__label">Sign in with Google</span>
 				</div>
 			</button>
 		</div>

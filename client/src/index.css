@@ -49,6 +49,7 @@ a {
 	text-align: center;
 }
 
+button,
 .button {
 	padding: 0.75rem 1.5rem;
 	border-radius: 5rem;
@@ -58,6 +59,7 @@ a {
 	transition: all 0.2s ease-in;
 	white-space: nowrap;
 	overflow: hidden;
+	border: none;
 }
 
 .button:hover {
@@ -70,6 +72,27 @@ a {
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
+.button__outline {
+	border: 1px solid var(--color-primary);
+	background-color: transparent;
+	padding: 0.7rem 1.4rem;
+}
+
+.button__danger {
+	color: tomato;
+	border-color: tomato;
+}
+
+.button .icon {
+	vertical-align: middle;
+	margin: 0 0.5rem;
+}
+
+.button .button__label {
+	font-size: 0.8rem;
+	vertical-align: middle;
+	text-transform: initial;
+}
 .header {
 	padding: 1rem 0;
 	display: flex;
@@ -81,6 +104,10 @@ a {
 	width: 12rem;
 }
 
+.nav {
+	display: flex;
+	align-items: center;
+}
 .nav__item {
 	margin: 0 0.5rem;
 	text-transform: uppercase;
@@ -222,7 +249,6 @@ label:hover {
 .gradient-box {
 	display: flex;
 	align-items: center;
-	/* //width: 50vw; */
 	width: 90%;
 	margin: auto;
 	max-width: 22em;
@@ -277,19 +303,4 @@ label:hover {
 }
 .masonry-item:hover {
 	filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));
-}
-
-/* button */
-button {
-	border-radius: 0.75rem;
-	background-color: red;
-	color: white;
-	display: inline;
-}
-.btn_content {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	height: 2rem;
 }
