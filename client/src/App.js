@@ -1,50 +1,47 @@
-import {useEffect,useState} from 'react';
+import { useEffect, useState } from "react";
 //toast
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import {  Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import UserFeed from "./Components/User/UserFeed";
-import {auth,projectFirestore} from "./firebase/config";	
+
+import { auth } from "./firebase/config";
+
+import { projectFirestore } from "./firebase/config";
+
 import Welcome from "./Components/welcome";
-import { useDispatch } from 'react-redux';
-        
+import { useDispatch } from "react-redux";
+
 function App() {
-	const [userState, setUserState] = useState(null); 
+	const [userState, setUserState] = useState(null);
 	const dispatch = useDispatch();
 	const collectionRef = projectFirestore.collection("users");
 	useEffect(() => {
 		auth.onAuthStateChanged(async (user) => {
-		 if(user){
-			 
-			await collectionRef.add({
-				 'Name': user.displayName,
-				 'Email':user.email, 
-				 "UserProfile":user.photoURL
-			});
-
-			 console.log("Firebase User-->",user);
-			 dispatch({	
-				 		type: "USER_LOGGED_IN",
-						payload: {
-							Name: user.displayName,
-							Email: user.email,
-							UserProfile: user.photoURL
-						}
-					});
-			setUserState(user);
-		 }else{
-			setUserState(null);
-		 }
+			if (user) {
+				console.log("Firebase User-->", user);
+				dispatch({
+					type: "USER_LOGGED_IN",
+					payload: {
+						Name: user.displayName,
+						Email: user.email,
+						UserProfile: user.photoURL,
+					},
+				});
+				setUserState(user);
+			} else {
+				setUserState(null);
+			}
 		});
-	} , [dispatch,collectionRef]);
+	}, [dispatch, collectionRef]);
 
 	const handleLogout = () => {
 		auth.signOut();
-		if(userState){
-			dispatch({ type:"USER_LOGGED_OUT",payload:null});
+		if (userState) {
+			dispatch({ type: "USER_LOGGED_OUT", payload: null });
 		}
-	}
+	};
 	console.log("CHECK-->", process.env.REACT_APP_FIREBASE_API_KEY);
 	return (
 		<div className="App">
@@ -52,7 +49,6 @@ function App() {
 				<div className="brand">
 					<h1 className="brand__name">PicBook</h1>
 					<small className="brand__tagline">Adding Life To Moments.</small>
-					
 				</div>
 			</header>
 			<ToastContainer />
