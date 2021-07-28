@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../../index.css";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import {FiLogOut} from 'react-icons/fi'
+import { FiLogOut } from "react-icons/fi";
 import { Modal, Button } from "antd";
 
 const Header = () => {
@@ -59,6 +59,7 @@ const Header = () => {
 						<FiLogOut
 							className="nav__item"
 							onClick={handleModalVisibility}
+							title="Logout"
 						/>
 						<Modal
 							title="Closing PicBook?🥺"
@@ -68,16 +69,14 @@ const Header = () => {
 							footer={[
 								<Button
 									key="OK"
-									style={{ backgroundColor: "#9000ff" , color: "white" }}
-									onClick={handleLogout}>
+									style={{ backgroundColor: "#9000ff", color: "white" }}
+									onClick={handleLogout}
+								>
 									OK
 								</Button>,
-								<Button 
-									key="cancel" 
-									onClick={hideLogoutModal}>
+								<Button key="cancel" onClick={hideLogoutModal}>
 									Cancel
 								</Button>,
-								
 							]}
 						>
 							Press OK to logout
