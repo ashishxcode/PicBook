@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase/config";
 import { useDispatch, useSelector } from "react-redux";
 import "../../index.css";
@@ -8,21 +8,32 @@ import { Modal, Button } from "antd";
 
 const Header = () => {
 	const dispatch = useDispatch();
-	const { user } = useSelector((state) => ({ ...state }));
+	const { user, modal } = useSelector((state) => ({ ...state }));
 	// const { userProfile } = user;
 	const history = useHistory();
 
-	const [showModal, setShowModal] = useState(false);
+	const handleModalVisibility = () => {
+		console.log("Time to dispatch");
+		dispatch({
+			type: "SHOW_MODAL",
+			payload: true,
+		});
+	};
 
-	// const handleLogoutModal = (e) => {
-	// 	setShowModal(true);
-	// };
+	const hideLogoutModal = () => {
+		dispatch({
+			type: "SHOW_MODAL",
+			payload: false,
+		});
+	};
 
 	const handleLogout = () => {
 		toast.warning("See You Soon... 👋");
 		auth.signOut();
+
 		history.push("/");
 		dispatch({ type: "USER_LOGGED_OUT", payload: null });
+		dispatch({ type: "SHOW_MODAL", payload: false });
 	};
 
 	return (
@@ -46,18 +57,17 @@ const Header = () => {
 						/>
 						<button
 							className="nav__item button button__outline button__danger"
-							onClick={() => setShowModal(true)}
+							onClick={handleModalVisibility}
 						>
 							Logout
 						</button>
-
 						<Modal
 							title="Closing PicBook?🥺"
 							style={{ backgroundColor: "purple" }}
-							visible={showModal === true}
-							onCancel={() => setShowModal(false)}
+							visible={modal}
+							onCancel={hideLogoutModal}
 							footer={[
-								<Button key="cancel" onClick={() => setShowModal(false)}>
+								<Button key="cancel" onClick={hideLogoutModal}>
 									Cancel
 								</Button>,
 								<Button
