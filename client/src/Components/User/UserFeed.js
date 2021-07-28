@@ -8,16 +8,23 @@ import { useSelector } from "react-redux";
 const UserFeed = ({ history }) => {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const { user } = useSelector((state) => ({ ...state }));
-	
+
+	//destructuring usser name from user object
+	const { Name } = user;
+
 	useEffect(() => {
 		if (!user) {
 			history.push("/");
 		}
-	}, [user,history]);
+	}, [user, history]);
 
 	return (
 		<>
-			{user && user.Name ? <h2>Welcome {user.Name.split(" ")[0]} </h2>: <h2>Welcome</h2>}
+			{user && user.Name ? (
+				<h2>Welcome {user.Name.split(" ")[0]} </h2>
+			) : (
+				<h2>Welcome</h2>
+			)}
 			<UploadFile />
 
 			<ImageGrid
