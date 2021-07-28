@@ -10,7 +10,7 @@ const Welcome = ({ history }) => {
 
 	useEffect(() => {
 		if (user) history.push("/user");
-	}, [user,history]);
+	}, [user, history]);
 
 	const userSignUp = () => {
 		console.log("Working");
