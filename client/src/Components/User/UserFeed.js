@@ -16,11 +16,15 @@ const UserFeed = ({ history }) => {
 		if (!user) {
 			history.push("/");
 		}
-	}, []);
+	}, [user, history]);
 
 	return (
 		<>
-			{user && Name && <h1>Welcome {Name.split(" ")[0]} </h1>}
+			{user && user.Name ? (
+				<h2>Welcome {user.Name.split(" ")[0]} </h2>
+			) : (
+				<h2>Welcome</h2>
+			)}
 			<UploadFile />
 
 			<ImageGrid
