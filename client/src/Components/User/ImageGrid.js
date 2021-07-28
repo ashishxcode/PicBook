@@ -2,13 +2,14 @@ import React from "react";
 import useFirestore from "../../Hooks/useFIrestore";
 import { motion } from "framer-motion";
 import { Card } from "antd";
+import {FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon,WhatsappShareButton, WhatsappIcon,PinterestIcon} from "react-share";
 
 const ImageGrid = ({ selectedImage, setSelectedImage }) => {
 	const { docs } = useFirestore("Images");
 
+	
 	console.log("Docs --->", docs);
 	return (
-		<div className="masonry-wrapper">
 			<div className="masonry">
 				{docs &&
 					docs.map((item) => {
@@ -18,7 +19,6 @@ const ImageGrid = ({ selectedImage, setSelectedImage }) => {
 								layout
 								whileHover={{ opacity: 1 }}
 								key={item.id}
-								onClick={() => setSelectedImage(item.url)}
 							>
 								{/* <motion.img
 									src={item.url}
@@ -38,16 +38,63 @@ const ImageGrid = ({ selectedImage, setSelectedImage }) => {
 										<img
 											src={item.url}
 											alt="Oops"
-											style={{ height: "12rem", objectFit: "cover" }}
+											onClick={() => setSelectedImage(item.url)}
 										/>
 									}
-									actions={[<> Facebook </>, <>Twitter </>, <> Instagram </>]}
+									actions={[
+										<> 
+										<FacebookShareButton 
+											quote={"Check out my pic - PicBook"} 
+											media={item.url} 
+											url={item.url}	>
+											<FacebookIcon 
+											size={24} 	  
+											round ={true}
+										/>
+										</FacebookShareButton>
+										</>
+										,
+										<> 
+									<TwitterShareButton   
+											quote={"Check out my pic - PicBook"} 
+									 		media={item.url}
+											url={item.url}	>
+											<TwitterIcon 
+											size={24} 	
+											round ={true}
+										/>
+									</TwitterShareButton>
+										</>,
+										
+										<> 
+										<PinterestIcon 
+											size={24} 	  
+											quote={"Check out my pic - PicBook"} 
+											media={item.url}
+											url={item.url}	
+											round ={true}
+										/>
+										</>,
+										
+										<> 
+										<WhatsappShareButton 
+											quote={"Check out my pic - PicBook"} 
+									 		media={item.url}
+											url={item.url}
+										>
+											<WhatsappIcon 
+											size={24} 	  
+											
+											round ={true}
+										/>
+										</WhatsappShareButton>
+										</>
+									]}
 								></Card>
 							</motion.div>
 						);
 					})}
 			</div>
-		</div>
 	);
 };
 
