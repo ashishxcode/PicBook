@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 //toast
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,11 +11,10 @@ import { auth } from "./firebase/config";
 import { projectFirestore } from "./firebase/config";
 
 import Welcome from "./Components/welcome";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import Header from "./Components/Header/Header";
 
 function App() {
-	
 	const dispatch = useDispatch();
 	const collectionRef = projectFirestore.collection("users");
 
@@ -29,10 +28,10 @@ function App() {
 						Name: user.displayName,
 						Email: user.email,
 						UserProfile: user.photoURL,
-						UserId: user.uid
+						UserId: user.uid,
 					},
 				});
-			} 
+			}
 		});
 
 		//cleanup
