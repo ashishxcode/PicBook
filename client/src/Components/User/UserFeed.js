@@ -9,6 +9,10 @@ const UserFeed = ({ history }) => {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const { user } = useSelector((state) => ({ ...state }));
 
+	//destructuring usser name from user object
+
+	const { Name } = user;
+
 	useEffect(() => {
 		if (!user) {
 			history.push("/");
@@ -17,6 +21,7 @@ const UserFeed = ({ history }) => {
 
 	return (
 		<>
+			{user && Name && <h1>Welcome {Name.split(" ")[0]} </h1>}
 			<UploadFile />
 
 			<ImageGrid
