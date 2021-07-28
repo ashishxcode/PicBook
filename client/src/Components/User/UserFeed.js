@@ -10,7 +10,7 @@ const UserFeed = ({ history }) => {
 	const { user } = useSelector((state) => ({ ...state }));
 
 	//destructuring usser name from user object
-	const { Name } = user;
+	// const { Name } = user;
 
 	useEffect(() => {
 		if (!user) {
