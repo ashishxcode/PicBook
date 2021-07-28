@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { auth } from "../../firebase/config";
 import { useDispatch, useSelector } from "react-redux";
 import "../../index.css";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import {FiLogOut} from 'react-icons/fi'
 import { Modal, Button } from "antd";
 
 const Header = () => {
@@ -55,29 +56,28 @@ const Header = () => {
 							src={user.UserProfile}
 							alt=""
 						/>
-						<button
-							className="nav__item button button__outline button__danger"
+						<FiLogOut
+							className="nav__item"
 							onClick={handleModalVisibility}
-						>
-							Logout
-						</button>
+						/>
 						<Modal
 							title="Closing PicBook?🥺"
 							style={{ backgroundColor: "purple" }}
 							visible={modal}
 							onCancel={hideLogoutModal}
 							footer={[
-								<Button key="cancel" onClick={hideLogoutModal}>
-									Cancel
-								</Button>,
 								<Button
 									key="OK"
-									type="primary"
-									style={{ backgroundColor: "purple" }}
-									onClick={handleLogout}
-								>
+									style={{ backgroundColor: "#9000ff" , color: "white" }}
+									onClick={handleLogout}>
 									OK
 								</Button>,
+								<Button 
+									key="cancel" 
+									onClick={hideLogoutModal}>
+									Cancel
+								</Button>,
+								
 							]}
 						>
 							Press OK to logout
