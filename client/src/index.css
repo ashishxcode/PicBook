@@ -328,3 +328,22 @@ label:hover {
 	height: 16rem;
 	object-fit: contain;
 }
+
+/* Profile Component */
+.profile__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+	border-radius: 5px;
+}
+
+.profile__image {
+	width: 8rem;
+	border-radius: 100%;
+	margin-bottom: 1rem;
+
+	box-shadow: 1px 1px 10px rgba(39, 1, 255, 0.3);
+}

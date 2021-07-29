@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 //toast
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,6 +13,7 @@ import { projectFirestore } from "./firebase/config";
 import Welcome from "./Components/welcome";
 import { useDispatch } from "react-redux";
 import Header from "./Components/Header/Header";
+import Profile from "./Components/User/Profile";
 
 function App() {
 	const dispatch = useDispatch();
@@ -45,6 +46,7 @@ function App() {
 			<Switch>
 				<Route path="/" exact component={Welcome} />
 				<Route path="/user" exact component={UserFeed} />
+				<Route path="/profile" exact component={Profile} />
 			</Switch>
 		</div>
 	);

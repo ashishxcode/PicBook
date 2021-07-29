@@ -1,42 +1,11 @@
 import React from "react";
-import { auth } from "../../firebase/config";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "../../index.css";
-import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
-import { FiLogOut } from "react-icons/fi";
-import { Modal, Button } from "antd";
-
+import {HiHome,HiLogin} from 'react-icons/hi'
 const Header = () => {
-	const dispatch = useDispatch();
-	const { user, modal } = useSelector((state) => ({ ...state }));
-	// const { userProfile } = user;
-	const history = useHistory();
-
-	const handleModalVisibility = () => {
-		console.log("Time to dispatch");
-		dispatch({
-			type: "SHOW_MODAL",
-			payload: true,
-		});
-	};
-
-	const hideLogoutModal = () => {
-		dispatch({
-			type: "SHOW_MODAL",
-			payload: false,
-		});
-	};
-
-	const handleLogout = () => {
-		toast.warning("See You Soon... 👋");
-		auth.signOut();
-
-		history.push("/");
-		dispatch({ type: "USER_LOGGED_OUT", payload: null });
-		dispatch({ type: "SHOW_MODAL", payload: false });
-	};
-
+	const { user } = useSelector((state) => ({ ...state }));
+	
 	return (
 		<header className="header">
 			<div className="brand">
@@ -46,50 +15,33 @@ const Header = () => {
 			</div>
 
 			<nav className="nav">
-				<a className="nav__item" href="/">
-					Home
-				</a>
+				
+				
 				{user ? (
 					<div className="nav">
-						<img
+						<a className="nav__item" href="/">
+							<HiHome className="nav__icon" />	
+							<span className="nav__label">Home</span>
+						</a>
+						<Link to='/profile'>
+							<img
 							className="nav__item profile__avatar"
 							src={user.UserProfile}
-							alt=""
+							alt=""	
 						/>
-						<FiLogOut
-							className="nav__item"
-							onClick={handleModalVisibility}
-							title="Logout"
-						/>
-						<Modal
-							title="Closing PicBook?🥺"
-							style={{ backgroundColor: "purple" }}
-							visible={modal}
-							onCancel={hideLogoutModal}
-							footer={[
-								<Button
-									key="OK"
-									style={{ backgroundColor: "#9000ff", color: "white" }}
-									onClick={handleLogout}
-								>
-									OK
-								</Button>,
-								<Button key="cancel" onClick={hideLogoutModal}>
-									Cancel
-								</Button>,
-							]}
-						>
-							Press OK to logout
-						</Modal>
+						</Link>				
 					</div>
 				) : (
-					<div>
+					<div className="nav">
 						<a className="nav__item" href="/">
-							Sign In
+							<HiHome className="nav__icon" />	
+							<span className="nav__label">Home</span>
 						</a>
-						<a className="nav__item button button__primary" href="/">
-							Sign Up
+						<a className="nav__item" href="/">
+							<HiLogin className="nav__icon"/>
+							<span className="nav__label">Sign In</span>
 						</a>
+						
 					</div>
 				)}
 			</nav>

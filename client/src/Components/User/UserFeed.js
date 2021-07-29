@@ -6,7 +6,6 @@ import UploadFile from "./UploadFile";
 
 import { useSelector } from "react-redux";
 
-import {FacebookShareButton,FacebookIcon} from "react-share";
 
 const UserFeed = ({ history }) => {
 	const [selectedImage, setSelectedImage] = useState(null);
