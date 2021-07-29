@@ -106,7 +106,6 @@ button,
 .nav {
 	display: flex;
 	align-items: center;
-	width: 100%;
 }
 .nav__item {
 	margin: 0 0.5rem;
@@ -143,13 +142,14 @@ button,
 		text-align: center;
 	}
 	.nav {
-		position: absolute;
+		overflow: hidden;
+		position: fixed;
 		bottom: 0;
+		width: 100%;
 		padding: 1rem;
 		background: #000;
 		display: flex;
 		justify-content: space-evenly;
-		width: 100%;
 		border-radius: 1rem 1rem 0 0;
 	}
 
