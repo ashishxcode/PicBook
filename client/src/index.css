@@ -20,8 +20,6 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	background-color: var(--color-background);
-	color: var(--color-primary);
 }
 
 code {
@@ -42,7 +40,7 @@ a {
 }
 
 .error {
-	color: red;
+	color: tomato;
 }
 
 .text__center {
@@ -106,6 +104,7 @@ button,
 .nav {
 	display: flex;
 	align-items: center;
+	z-index: 100;
 }
 .nav__item {
 	margin: 0 0.5rem;
@@ -127,6 +126,7 @@ button,
 .nav__label {
 	vertical-align: middle;
 }
+
 .profile__avatar {
 	border-radius: 100%;
 	width: 2.3rem;
@@ -138,9 +138,15 @@ button,
 	.header {
 		justify-content: center;
 	}
+
 	.brand {
 		text-align: center;
 	}
+
+	.brand__name img {
+		width: 8rem;
+	}
+
 	.nav {
 		overflow: hidden;
 		position: fixed;
@@ -151,6 +157,7 @@ button,
 		display: flex;
 		justify-content: space-evenly;
 		border-radius: 1rem 1rem 0 0;
+		margin-top: 5rem;
 	}
 
 	.nav__icon {
@@ -160,6 +167,7 @@ button,
 		display: none;
 	}
 }
+
 .main {
 	margin: 2rem 0;
 }
@@ -170,7 +178,7 @@ button,
 }
 
 .form {
-	margin: 30px auto 10px;
+	margin: 3rem auto 0 auto;
 }
 
 label input {
@@ -209,64 +217,6 @@ label:hover {
 	margin-top: 3px;
 }
 
-/* image grid styles */
-/* .masonry-wrapper {
-	display: flex;
-	justify-content: center;
-}
-
-.masonry {
-	display: grid;
-	grid-template-columns: auto auto auto;
-}
-.masonry-item {
-	background: linear-gradient(
-		to right,
-		var(--color-dark),
-		var(--color-primary)
-	);
-	position: relative;
-	height: 12rem;
-	width: 10rem;
-}
-@media (max-width: 600px) {
-	.masonry {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
-@media only screen and (max-width: 1023px) and (min-width: 768px) {
-	.masonry {
-		columns: 2;
-		column-gap: 30px;
-	}
-}
-@media only screen and (min-width: 1024px) {
-	.masonry {
-		columns: 3;
-	}
-}
-.masonry-item,
-.masonry-content {
-	border-radius: 4px;
-	overflow: hidden;
-}
-.masonry-item {
-	filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.3));
-	transition: filter 0.25s ease-in-out;
-}
-.masonry-item:hover {
-	filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));
-}
-
-.masonry-item img {
-	position: absolute;
-	top: 2.5%;
-	left: 2.5%;
-	height: 95%;
-	width: 95%;
-} */
-
 /* modal styles */
 .backdrop {
 	position: fixed;
@@ -286,83 +236,47 @@ label:hover {
 	border-radius: 5px;
 }
 
-/* test */
-.gradient-box {
-	display: flex;
-	align-items: center;
-	width: 90%;
-	margin: auto;
-	max-width: 22em;
-
-	position: relative;
-	padding: 30% 2em;
-	box-sizing: border-box;
-
-	border: 5px;
-	color: #fff;
-	background: #000;
-	background-clip: padding-box; /* !importanté */
-	border: solid border transparent; /* !importanté */
-	border-radius: 1em;
-}
-
-/* test */
-
-/* .masonry-wrapper {
-	padding: 1.5em;
-	max-width: 960px;
-	margin-right: auto;
-	margin-left: auto;
-}
 .masonry {
-	columns: 2;
-	column-gap: 10px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1rem;
+	padding: 3rem 0;
 }
-.masonry-item {
-	display: inline-block;
-	vertical-align: top;
-	margin-bottom: 10px;
-}
-@media only screen and (max-width: 1023px) and (min-width: 768px) {
-	.masonry {
-		columns: 3;
-	}
-}
-@media only screen and (min-width: 1024px) {
-	.masonry {
-		columns: 3;
-	}
-}
-.masonry-item,
-.masonry-content {
-	border-radius: 4px;
-	overflow: hidden;
-}
-.masonry-item {
-	filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.3));
-	transition: filter 0.25s ease-in-out;
-}
-.masonry-item:hover {
-	filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.3));
-} */
 
-.masonry {
-	background-color: green;
-	display: flex;
-	flex-direction: row;
+@media screen and (max-width: 600px) {
+	.masonry {
+		padding: 5rem 0 10rem 0;
+	}
 }
 
 .masonry-item {
 	width: 100%;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+	transition: all 0.2s ease;
+	border-radius: 10px;
+}
+
+.masonry-item:hover {
+	transform: scale(1.02);
 }
 
 .masonry-content img {
-	min-width: 12rem;
 	width: 100%;
-	height: 16rem;
-	object-fit: contain;
+	height: 300px;
+	object-fit: cover;
+	border-radius: 10px 10px 0 0;
 }
 
+.card__action {
+	display: flex;
+	padding: 1rem 5px;
+}
+.share-buttons {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+	gap: 5px;
+}
 /* Profile Component */
 .profile__container {
 	display: flex;
@@ -378,6 +292,5 @@ label:hover {
 	width: 8rem;
 	border-radius: 100%;
 	margin-bottom: 1rem;
-
 	box-shadow: 1px 1px 10px rgba(39, 1, 255, 0.3);
 }

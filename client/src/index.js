@@ -4,8 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
-//antd css files
-import "antd/dist/antd.css";
+
 
 //redux essentials boiler plates
 import { createStore } from "redux";
