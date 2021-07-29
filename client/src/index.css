@@ -53,8 +53,7 @@ button,
 .button {
 	padding: 0.75rem 1.5rem;
 	border-radius: 5rem;
-	font-weight: bold;
-	font-size: 80%;
+	font-weight: 900;
 	text-transform: uppercase;
 	transition: all 0.2s ease-in;
 	white-space: nowrap;
@@ -119,6 +118,15 @@ button,
 	opacity: 0.8;
 }
 
+.nav__icon {
+	font-size: 1.2rem;
+	vertical-align: middle;
+	margin-right: 0.3rem;
+	color: var(--color-primary);
+}
+.nav__label {
+	vertical-align: middle;
+}
 .profile__avatar {
 	border-radius: 100%;
 	width: 2.3rem;
@@ -126,6 +134,31 @@ button,
 	border: 2px solid var(--color-primary);
 }
 
+@media screen and (max-width: 600px) {
+	.header {
+		justify-content: center;
+	}
+	.brand {
+		text-align: center;
+	}
+	.nav {
+		position: absolute;
+		bottom: 0;
+		padding: 1rem;
+		background: #000;
+		display: flex;
+		justify-content: space-evenly;
+		width: 100%;
+		border-radius: 1rem 1rem 0 0;
+	}
+
+	.nav__icon {
+		font-size: 1.8rem;
+	}
+	.nav__label {
+		display: none;
+	}
+}
 .main {
 	margin: 2rem 0;
 }
