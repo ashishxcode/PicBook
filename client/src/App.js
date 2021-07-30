@@ -1,30 +1,29 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 //toast
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import { Route, Switch } from "react-router-dom";
-import UserFeed from "./Components/User/UserFeed";
+import { Route, Switch } from 'react-router-dom';
+import UserFeed from './Components/User/UserFeed';
 
-import { projectFirestore } from "./firebase/config";
-import { auth } from "./firebase/config";
+import { projectFirestore } from './firebase/config';
+import { auth } from './firebase/config';
 
-
-import Welcome from "./Components/welcome";
-import { useDispatch } from "react-redux";
-import Header from "./Components/Header/Header";
-import Profile from "./Components/User/Profile";
+import Welcome from './Components/welcome';
+import { useDispatch } from 'react-redux';
+import Header from './Components/Header/Header';
+import Profile from './Components/User/Profile';
 
 function App() {
 	const dispatch = useDispatch();
-	const {docs} = projectFirestore.collection("Images");
+	const { docs } = projectFirestore.collection('Images');
 
-	console.log("App ->",docs);
+	console.log('App ->', docs);
 	useEffect(() => {
 		const unSubscribe = auth.onAuthStateChanged(async (user) => {
 			if (user) {
 				dispatch({
-					type: "USER_LOGGED_IN",
+					type: 'USER_LOGGED_IN',
 					payload: {
 						Name: user.displayName,
 						Email: user.email,

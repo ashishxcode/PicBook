@@ -3,7 +3,7 @@ export const ModalReducer = (state = false, action) => {
 		default:
 			return state;
 
-		case "SHOW_MODAL":
+		case 'SHOW_MODAL':
 			return action.payload;
 	}
 };

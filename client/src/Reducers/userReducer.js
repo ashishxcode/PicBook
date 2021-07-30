@@ -3,10 +3,10 @@ export const userReducer = (state = null, action) => {
 		default:
 			return state;
 
-		case "USER_LOGGED_IN":
+		case 'USER_LOGGED_IN':
 			return action.payload;
 
-		case "USER_LOGGED_OUT":
+		case 'USER_LOGGED_OUT':
 			return action.payload;
 	}
 };

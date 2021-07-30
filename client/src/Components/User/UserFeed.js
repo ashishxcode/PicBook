@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import ImageGrid from "./ImageGrid";
-import Modal from "./Modal";
-import UploadFile from "./UploadFile";
+import ImageGrid from './ImageGrid';
+import Modal from './Modal';
+import UploadFile from './UploadFile';
 
-import { useSelector } from "react-redux";
-
+import { useSelector } from 'react-redux';
 
 const UserFeed = ({ history }) => {
 	const [selectedImage, setSelectedImage] = useState(null);
@@ -16,19 +15,19 @@ const UserFeed = ({ history }) => {
 
 	useEffect(() => {
 		if (!user) {
-			history.push("/");
+			history.push('/');
 		}
 	}, [user, history]);
 
 	return (
 		<>
 			{user && user.Name ? (
-				<h2>Welcome {user.Name.split(" ")[0]} </h2>
+				<h2>Welcome {user.Name.split(' ')[0]} </h2>
 			) : (
 				<h2>Welcome</h2>
 			)}
 			<UploadFile />
-			
+
 			<ImageGrid
 				selectedImage={selectedImage}
 				setSelectedImage={setSelectedImage}
